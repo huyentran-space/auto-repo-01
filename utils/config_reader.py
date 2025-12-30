@@ -27,3 +27,8 @@ class ConfigReader:
     def get_password():
         """Get the password from the configuration"""
         return ConfigReader.load_config()['credentials']['password']
+    
+    @staticmethod
+    def get_timeouts():
+        """Get the ptimeout from the configuration"""
+        return ConfigReader.load_config()['timeouts']['implicit']
