@@ -32,3 +32,8 @@ class ConfigReader:
     def get_timeouts():
         """Get the ptimeout from the configuration"""
         return ConfigReader.load_config()['timeouts']['implicit']
+
+    @staticmethod
+    def get_api_base_url():
+        """Get the API base URL from the configuration"""
+        return ConfigReader.load_config()['api_base_url']

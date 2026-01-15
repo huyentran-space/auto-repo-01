@@ -8,4 +8,5 @@
     "implicit": 10,
     "page_load": 30
   }
+  "api_base_url": "https://jsonplaceholder.typicode.com"
 }
