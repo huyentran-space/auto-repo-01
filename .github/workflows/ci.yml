@@ -37,7 +37,7 @@ jobs:
 
       - name: Run tests
         #run: pytest -m smoke --html=report/report.html --self-contained-html
-        run: pytest {{ matrix.suite }} --maxfail=1 --disable-warnings -q
+        run: pytest ${{ matrix.suite }} --maxfail=1 --disable-warnings -q
 
       - name: Upload test report
         if: always()
