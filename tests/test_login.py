@@ -3,6 +3,7 @@ from pages.login_page import LoginPage
 from selenium.webdriver.common.by import By
 from utils.config_reader import ConfigReader
 
+@pytest.mark.smoke
 def test_login(driver):
     login_page = LoginPage(driver)
     login_page.do_login(ConfigReader.get_username(),ConfigReader.get_password())

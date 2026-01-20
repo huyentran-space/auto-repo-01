@@ -4,11 +4,14 @@ import csv
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+import os
 
 class TestSearchWiki:
     
     def read_data_from_file(file_path):
-        with open(file_path, mode='r') as abc:
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        DATA_FILE = os.path.join(BASE_DIR, "data.csv")
+        with open(DATA_FILE, mode='r') as abc:
             csv_reader = csv.DictReader(abc)
             keywords = []
             for row in csv_reader:
