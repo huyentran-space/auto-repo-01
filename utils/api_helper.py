@@ -9,7 +9,7 @@ class APIHelper:
         self.headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (pytest-api-tester)'
+            'User-Agent': 'Mozilla/5.0 (pytest-api-tester)'
         }
         self.session.headers.update(self.headers)
 
