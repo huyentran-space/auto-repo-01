@@ -14,7 +14,9 @@ class CheckoutPage1(BasePage):
         self.find_element(self.first_name).send_keys(first)
         self.find_element(self.last_name).send_keys(last)
         self.find_element(self.zip_code).send_keys(zip_code)
+
+    def continue_checkout(self):
         self.click(self.continue_button)
 
     def cancel_checkout(self):
-        self.click(self.cancel_button)
+        self.click(self.cancel_button1)
