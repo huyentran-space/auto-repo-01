@@ -22,6 +22,12 @@ class BasePage:
         except NoSuchElementException:
             element = self.wait_for_element_clickable(locator)
             element.click()
+
+    def clear_and_type(self, locator, text):
+        element = self.find_element(locator)
+        element.send_keys(Keys.CONTROL + "a")
+        element.send_keys(Keys.DELETE)
+        element.send_keys(text)
         
     def wait_for_element_clickable(self,locator,timeout=None):
         wait = WebDriverWait(self.driver,timeout)

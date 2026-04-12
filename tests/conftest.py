@@ -15,6 +15,12 @@ def driver():
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-extensions")
     options.add_argument("--incognito")
+    prefs = {
+        "credentials_enable_service": False,
+        "profile.password_manager_enabled": False,
+        "autofill.profile_enabled": False
+    }
+    options.add_experimental_option("prefs", prefs)
     #options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(ConfigReader.get_timeouts())
