@@ -25,10 +25,10 @@ def test_empty_first_name(logged_in_driver):
         last="Doe",
         zip_code="70000"
     )        
-    sleep(3)  # Wait for the fields to be filled
+    #sleep(3)  # Wait for the fields to be filled
 
     checkout_page1.continue_checkout()
-    sleep(3)  # Wait for the error message to appear
+    #sleep(3)  # Wait for the error message to appear
 
     assert checkout_page1.get_error_message() == "Error: First Name is required"  
 
@@ -50,9 +50,56 @@ def test_empty_last_name(logged_in_driver):
         first="John",
         zip_code="70000"
     )        
-    sleep(3)  # Wait for the fields to be filled
+    #sleep(3)  # Wait for the fields to be filled
 
     checkout_page1.continue_checkout()
-    sleep(3)  # Wait for the error message to appear
+    #sleep(3)  # Wait for the error message to appear
 
     assert checkout_page1.get_error_message() == "Error: Last Name is required"  
+
+def test_empty_zip_code(logged_in_driver):
+    driver = logged_in_driver
+
+    inventory_page = InventoryPage(driver)
+    inventory_page.add_products_to_cart(1)
+    #sleep(3)  # Wait for the products to be added to the cart
+    inventory_page.go_to_cart()
+    #sleep(3)  # Wait for the cart page to load
+
+    cart_page = CartPage(driver)
+    cart_page.click_checkout()
+    #sleep(3)  # Wait for the checkout page to load
+
+    checkout_page1 = CheckoutPage1(driver)
+    checkout_page1.fill_checkout_info_with_empty_zip_code(
+        first="John",
+        last="Doe"
+    )        
+    #sleep(3)  # Wait for the fields to be filled
+
+    checkout_page1.continue_checkout()
+    #sleep(3)  # Wait for the error message to appear
+
+    assert checkout_page1.get_error_message() == "Error: Postal Code is required"
+
+def test_all_fields_empty(logged_in_driver):
+    driver = logged_in_driver
+
+    inventory_page = InventoryPage(driver)
+    inventory_page.add_products_to_cart(1)
+    #sleep(3)  # Wait for the products to be added to the cart
+    inventory_page.go_to_cart()
+    #sleep(3)  # Wait for the cart page to load
+
+    cart_page = CartPage(driver)
+    cart_page.click_checkout()
+    #sleep(3)  # Wait for the checkout page to load
+
+    checkout_page1 = CheckoutPage1(driver)
+    checkout_page1.clear_checkout_info()        
+    #sleep(3)  # Wait for the fields to be cleared
+
+    checkout_page1.continue_checkout()
+    #sleep(3)  # Wait for the error message to appear
+
+    assert checkout_page1.get_error_message() == "Error: First Name is required"
